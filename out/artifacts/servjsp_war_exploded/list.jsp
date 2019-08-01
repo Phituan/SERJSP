@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="entity.Employee" %><%--
   Created by IntelliJ IDEA.
   User: DELL
   Date: 8/1/2019
@@ -14,14 +15,28 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <title>Title</title>
 </head>
+<%List<Employee> list = (List<Employee>) request.getAttribute("list");%>
 <body>
+<ul>
+    <%
+        for (int i = 0; i < list.size(); i++) {
+    %>
+    <li>
+        <span><%= list.get(i).getId()%></span> <span><%= list.get(i).getFullname()%></span> - <span><%= list.get(i).getAddress()%></span> - <span><%= list.get(i).getBirthday()%></span> - <span><%= list.get(i).getDepartment()%></span> - <span><%= list.get(i).getPosition()%></span>
+    </li>
+    <%
+        }
+    %>
+</ul>
 <table class="table table-striped">
     <thead>
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">ID</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Birth Day</th>
+        <th scope="col">Address</th>
+        <th scope="col">Position</th>
+        <th scope="col">Partment</th>
     </tr>
     </thead>
     <tbody>
@@ -31,18 +46,7 @@
         <td>Otto</td>
         <td>@mdo</td>
     </tr>
-    <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-    </tr>
-    <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-    </tr>
+
     </tbody>
 </table>
 
